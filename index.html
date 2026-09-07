@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>看不見的馬丘比丘：60%地下說法查證</title>
+<meta name="description" content="一支短影片說馬丘比丘60%的建築在地下——這是真的嗎?從印加排水工程論文、PBS專訪到2023年地質雷達研究，逐一查核這個說法的證據網絡。" />
+
+<style>
+  :root{
+    --bg:#f7f3ea;
+    --bg-soft:#fbf8f2;
+    --surface:#ffffff;
+    --border:#e4dcc9;
+    --border-soft:#ece4d3;
+    --text:#2c261c;
+    --text-muted:#75695a;
+    --gold:#b8873a;
+    --gold-deep:#8f6526;
+    --terracotta:#b0552f;
+    --green:#3f6b4a;
+    --green-deep:#2e5138;
+    --blue:#2f6690;
+    --shadow: 0 6px 24px rgba(90,70,30,0.08);
+    --shadow-lg: 0 12px 40px rgba(90,70,30,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.75;
+  }
+  img{max-width:100%;display:block;}
+  a{color:var(--blue);}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+  section{padding:64px 0;}
+  h2{font-size:1.6rem;margin:0 0 8px;color:var(--green-deep);}
+  h3{font-size:1.15rem;margin:0 0 8px;}
+  .eyebrow{
+    display:inline-block;font-size:0.78rem;letter-spacing:0.12em;
+    color:var(--gold-deep);font-weight:700;text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .lead{color:var(--text-muted);font-size:1.02rem;max-width:640px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(184,135,58,0.16), transparent 55%),
+      radial-gradient(ellipse at 100% 0%, rgba(63,107,74,0.14), transparent 50%),
+      linear-gradient(180deg,#f2ecdd 0%, var(--bg) 100%);
+    border-bottom:1px solid var(--border);
+    padding:56px 0 48px;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:center;
+  }
+  @media(max-width:760px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{
+    font-size:2.15rem;line-height:1.35;margin:0 0 14px;color:var(--text);
+  }
+  .hero h1 em{font-style:normal;color:var(--terracotta);}
+  .video-frame{
+    position:relative;width:100%;max-width:300px;margin:0 auto;
+    border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);
+    border:6px solid var(--surface);
+    aspect-ratio:9/16;background:#111;
+  }
+  .video-frame iframe{width:100%;height:100%;border:0;}
+  .video-caption{
+    text-align:center;font-size:0.82rem;color:var(--text-muted);margin-top:10px;
+  }
+  .video-caption a{color:var(--text-muted);text-decoration:underline;}
+
+  /* ---------- Verdict banner ---------- */
+  .verdict{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--surface);border:1px solid var(--border);
+    border-left:6px solid var(--green);
+    border-radius:16px;padding:20px 24px;box-shadow:var(--shadow);
+    margin-top:28px;
+  }
+  .verdict .badge{
+    flex:none;width:56px;height:56px;border-radius:50%;
+    background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:1.6rem;font-weight:700;
+  }
+  .verdict strong{color:var(--green-deep);font-size:1.05rem;}
+  .verdict p{margin:6px 0 0;color:var(--text-muted);font-size:0.95rem;}
+
+  /* ---------- Node graph ---------- */
+  .graph-section{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .graph-wrap{
+    position:relative;max-width:640px;margin:36px auto 0;
+    aspect-ratio:1/1;
+  }
+  .graph-wrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+  .graph-wrap svg line{stroke:#d3bd93;stroke-width:0.5;}
+  .node{
+    position:absolute;transform:translate(-50%,-50%);
+    width:26%;aspect-ratio:1/1;border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:6%;
+    text-decoration:none;color:var(--text);
+    background:var(--surface);border:2px solid var(--border);
+    box-shadow:var(--shadow);
+    font-size:0.78rem;font-weight:600;line-height:1.3;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .node span.ico{font-size:1.4rem;display:block;margin-bottom:2px;}
+  .node:hover{transform:translate(-50%,-50%) scale(1.08);box-shadow:var(--shadow-lg);border-color:var(--gold);}
+  .node.center{
+    width:34%;background:linear-gradient(160deg,var(--terracotta),#8a3d1e);
+    color:#fff;border:none;font-size:0.85rem;z-index:2;
+  }
+  .node.center span.ico{font-size:1.7rem;}
+  .node.n-wright{ left:50%; top:12%; }
+  .node.n-pbs{ left:86.1%; top:38.3%; }
+  .node.n-gpr{ left:72.3%; top:80.7%; }
+  .node.n-dw{ left:27.7%; top:80.7%; }
+  .node.n-name{ left:13.9%; top:38.3%; }
+  .node.center{ left:50%; top:50%; }
+
+  @media(max-width:640px){
+    .graph-wrap{display:none;}
+  }
+  .graph-fallback{display:none;}
+  @media(max-width:640px){
+    .graph-fallback{
+      display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px;
+    }
+    .graph-fallback a{
+      display:block;background:var(--surface);border:1px solid var(--border);
+      border-radius:12px;padding:12px;text-align:center;text-decoration:none;color:var(--text);
+      font-size:0.82rem;font-weight:600;box-shadow:var(--shadow);
+    }
+    .graph-fallback a span.ico{font-size:1.3rem;display:block;margin-bottom:4px;}
+  }
+  .graph-hint{text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:18px;}
+
+  /* ---------- Evidence cards ---------- */
+  .evidence-card{
+    scroll-margin-top:24px;
+    background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:26px 28px;margin-bottom:20px;box-shadow:var(--shadow);
+    transition:box-shadow .2s ease, border-color .2s ease;
+  }
+  .evidence-card:target{
+    border-color:var(--gold);box-shadow:0 0 0 4px rgba(184,135,58,0.18), var(--shadow-lg);
+  }
+  .evidence-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+  .evidence-head .ico{
+    width:40px;height:40px;border-radius:10px;flex:none;
+    display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#fff;
+  }
+  .ico.gold{background:var(--gold);}
+  .ico.blue{background:var(--blue);}
+  .ico.green{background:var(--green);}
+  .ico.terracotta{background:var(--terracotta);}
+  .tag{
+    font-size:0.72rem;padding:3px 10px;border-radius:999px;font-weight:700;
+    background:#eef4ee;color:var(--green-deep);border:1px solid #d6e6d9;
+  }
+  .tag.primary{background:#fbf1e2;color:var(--gold-deep);border-color:#efd9ad;}
+  .tag.modern{background:#e9f2f8;color:#1f5074;border-color:#c9e0ee;}
+  .evidence-card p{margin:8px 0;}
+  .evidence-card .src{
+    display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:0.85rem;
+    font-weight:600;
+  }
+  .quote{
+    border-left:3px solid var(--gold);background:var(--bg-soft);
+    padding:10px 16px;margin:12px 0;font-style:italic;color:var(--text-muted);border-radius:0 8px 8px 0;
+  }
+
+  /* ---------- knowledge grid ---------- */
+  .facts-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:14px;margin:28px 0;
+  }
+  .fact{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:16px;text-align:center;box-shadow:var(--shadow);
+  }
+  .fact .num{font-size:1.5rem;font-weight:800;color:var(--terracotta);display:block;}
+  .fact .lbl{font-size:0.78rem;color:var(--text-muted);}
+
+  .drain-list{list-style:none;margin:20px 0;padding:0;counter-reset:d;}
+  .drain-list li{
+    counter-increment:d;position:relative;padding:10px 0 10px 42px;
+    border-bottom:1px dashed var(--border);font-size:0.95rem;
+  }
+  .drain-list li:last-child{border-bottom:none;}
+  .drain-list li::before{
+    content:counter(d);position:absolute;left:0;top:8px;width:28px;height:28px;
+    border-radius:50%;background:var(--green);color:#fff;font-size:0.8rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* video extension */
+  .video-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;}
+  @media(max-width:640px){.video-row{grid-template-columns:1fr;}}
+  .video-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    overflow:hidden;box-shadow:var(--shadow);
+  }
+  .video-card .embed{aspect-ratio:16/9;background:#111;}
+  .video-card .embed iframe{width:100%;height:100%;border:0;}
+  .video-card .meta{padding:14px 16px;}
+  .video-card .meta .chan{font-size:0.78rem;color:var(--text-muted);}
+
+  /* verdict scale */
+  .scale{
+    display:flex;border-radius:999px;overflow:hidden;height:14px;margin:14px 0 6px;
+    border:1px solid var(--border);
+  }
+  .scale span{flex:1;}
+  .scale .lo{background:#e8e0d0;}
+  .scale .mid{background:#e3c98a;}
+  .scale .hi{background:var(--green);}
+  .scale-labels{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text-muted);}
+  .scale-mark{
+    position:relative;
+  }
+  .scale-mark::after{
+    content:'▲ 這裡';position:absolute;top:-20px;left:82%;transform:translateX(-50%);
+    font-size:0.72rem;color:var(--green-deep);font-weight:700;white-space:nowrap;
+  }
+
+  footer{
+    background:#2c2618;color:#d9cfba;padding:36px 0;font-size:0.85rem;
+  }
+  footer a{color:#e9d9ab;}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+
+  .ref-list{list-style:none;padding:0;margin:16px 0;}
+  .ref-list li{padding:8px 0;border-bottom:1px solid var(--border-soft);font-size:0.92rem;}
+  .ref-list li:last-child{border-bottom:none;}
+  .ref-list .rtag{
+    display:inline-block;font-size:0.68rem;font-weight:700;padding:1px 8px;border-radius:6px;
+    background:var(--bg-soft);border:1px solid var(--border);color:var(--text-muted);margin-right:8px;
+  }
+
+  .callout{
+    background:#fbf1e2;border:1px solid #efd9ad;border-radius:14px;padding:18px 22px;margin:20px 0;
+  }
+  .callout strong{color:var(--gold-deep);}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">影片事實查核 · Fact Check</span>
+      <h1>馬丘比丘不是你看到的樣子——<em>60%</em>的工程藏在地底下?</h1>
+      <p class="lead">一支千萬點閱的 YouTube Shorts 這樣說。這句話從哪裡來、有沒有根據？我們追到了原始工程論文、公視專訪與 2023 年最新的地質雷達研究，把整條證據鏈攤開給你看。</p>
+    </div>
+    <div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/wrxDpXnLhcA" title="Machu Picchu Isn't What You See, 60% of It Is Underground" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">原始影片來源：@Flip_the_Problem ·「Machu Picchu Isn't What You See, 60% of It Is Underground」· <a href="https://www.youtube.com/shorts/wrxDpXnLhcA" target="_blank" rel="noopener">在 YouTube 觀看</a></p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="verdict">
+      <div class="badge">✓</div>
+      <div>
+        <strong>查核結論：大致屬實，但「60%」是工程師的估算值，不是精密測量出來的百分比</strong>
+        <p>馬丘比丘確實有極大量的地基、碎石排水層與整地工程埋在地表之下——這個說法最早由美國土木工程師 Kenneth R. Wright 團隊在 1990 年代的實地探勘中提出，並發表於美國土木工程師學會（ASCE）期刊。2023 年的地質雷達研究進一步證實了地下確有大規模的先期整地與基礎構造。但「60%」指的是「印加人施工投入的心力／工程量」的估算，而非用儀器精確量出「地下體積佔整體體積的60%」。</p>
+      </div>
+    </div>
+    <div class="scale-mark">
+      <div class="scale"><span class="lo"></span><span class="mid"></span><span class="hi" style="flex:1.6"></span></div>
+      <div class="scale-labels"><span>缺乏根據</span><span>部分屬實</span><span>證據充分</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="graph-section">
+  <div class="wrap">
+    <span class="eyebrow">證據網絡</span>
+    <h2>這句話背後，牽了哪些證據節點？</h2>
+    <p class="lead">點下任一節點，直接跳到下方對應的查核卡片與原始資料連結。</p>
+
+    <div class="graph-wrap">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+        <line x1="50" y1="50" x2="50" y2="12"></line>
+        <line x1="50" y1="50" x2="86.1" y2="38.3"></line>
+        <line x1="50" y1="50" x2="72.3" y2="80.7"></line>
+        <line x1="50" y1="50" x2="27.7" y2="80.7"></line>
+        <line x1="50" y1="50" x2="13.9" y2="38.3"></line>
+      </svg>
+      <a href="#claim" class="node center"><span class="ico">🎬</span>影片主張<br>60%在地下</a>
+      <a href="#ev-wright" class="node n-wright"><span class="ico">📜</span>1999<br>ASCE 工程論文</a>
+      <a href="#ev-pbs" class="node n-pbs"><span class="ico">🎙️</span>2010<br>PBS NOVA 專訪</a>
+      <a href="#ev-gpr" class="node n-gpr"><span class="ico">📡</span>2023<br>地質雷達研究</a>
+      <a href="#ev-dw" class="node n-dw"><span class="ico">📺</span>延伸紀錄片<br>DW Documentary</a>
+      <a href="#ev-name" class="node n-name"><span class="ico">❓</span>名稱爭議<br>它真的叫這名字嗎</a>
+    </div>
+
+    <div class="graph-fallback">
+      <a href="#ev-wright"><span class="ico">📜</span>1999 ASCE 工程論文</a>
+      <a href="#ev-pbs"><span class="ico">🎙️</span>2010 PBS NOVA 專訪</a>
+      <a href="#ev-gpr"><span class="ico">📡</span>2023 地質雷達研究</a>
+      <a href="#ev-dw"><span class="ico">📺</span>延伸紀錄片</a>
+      <a href="#ev-name" style="grid-column:1/3;"><span class="ico">❓</span>名稱爭議：它真的叫這名字嗎？</a>
+    </div>
+    <p class="graph-hint">手機版請直接點選下方方塊卡片</p>
+  </div>
+</section>
+
+<section id="claim">
+  <div class="wrap">
+    <span class="eyebrow">主張是什麼</span>
+    <h2>影片到底說了什麼？</h2>
+    <p>短片用一張剖面示意圖呈現：馬丘比丘表面上是石牆、階梯與神殿，但真正撐起整座山城、讓它撐過五百年風雨與地震的，是埋在梯田與廣場之下、肉眼看不到的基礎工程——包括深層地基、碎石排水層與整地結構。影片打出的字卡是「sixty percent of the construction lies underground」（施工有六成在地下）。</p>
+    <p>這個數字聽起來很戲劇化，容易讓人懷疑是不是自媒體誇大的說法。我們往回追了它的源頭。</p>
+  </div>
+</section>
+
+<section style="background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <span class="eyebrow">逐一查核</span>
+    <h2>五個證據節點，分別怎麼說</h2>
+
+    <div class="evidence-card" id="ev-wright">
+      <div class="evidence-head">
+        <div class="ico gold">📜</div>
+        <div>
+          <h3 style="margin:0;">說法的源頭：Wright 團隊的排水工程論文</h3>
+          <span class="tag primary">原始出處</span>
+        </div>
+      </div>
+      <p>「60%」這個數字最早出自美國土木暨水利工程師 <strong>Kenneth R. Wright</strong>、秘魯考古學家 <strong>Alfredo Valencia</strong> 與 William L. Lorah 三人，他們在 1994～1998 年間取得秘魯政府許可，實地探勘馬丘比丘的水文、地質與排水系統，成果發表於美國土木工程師學會（ASCE）《灌溉與排水工程期刊》的論文〈Ancient Machu Picchu Drainage Engineering〉。</p>
+      <p>論文在「排水」章節直接寫道，馬丘比丘真正的奇蹟不是漂亮的石牆，而是埋在地下、過去考古學界長期忽略的工程系統。</p>
+      <div class="quote">論文原文估計「印加人施工心力有六成集中在地下」（原文："some 60% of the Inca construction effort centered" underground）</div>
+      <p>這是一句工程師依現場探勘與地層剖面歸納出的整體估算，而不是逐一測量每一立方公尺土石得出的精確比例。</p>
+      <p>研究團隊在廣場挖了一個測試坑，深約9英尺（約2.7公尺），由上而下依序是黑色腐植土、砂質礫土，最底下是一層由印加人鑿石廢料堆成的碎石排水層——並在坑底發現了馬丘比丘目前唯一出土的黃金手鐲，推測是獻給大地之母 Pachamama 的祭品。</p>
+      <a class="src" href="https://www.waterhistory.org/histories/machupicchu/machupicchu.pdf" target="_blank" rel="noopener">📄 閱讀原始論文 PDF（waterhistory.org 全文轉載）</a>
+    </div>
+
+    <div class="evidence-card" id="ev-pbs">
+      <div class="evidence-head">
+        <div class="ico blue">🎙️</div>
+        <div>
+          <h3 style="margin:0;">同一位工程師，十年後的訪談再確認一次</h3>
+          <span class="tag">交叉比對</span>
+        </div>
+      </div>
+      <p>2010年，美國公共電視 PBS 科學節目《NOVA》就《Ghosts of Machu Picchu》紀錄片專訪了 Ken Wright。記者問他「如果你是當年印加的規劃者，最大的挑戰是什麼？」他回答，最大的問題是山崩與土壤不穩定，所以印加工程師必須把大量心力花在看不見的地方：</p>
+      <div class="quote">「印加工程師確實把整體工程心力的百分之五十、甚至六十花在地下——挖地基、整地——為的是讓馬丘比丘能永遠留存下去。」</div>
+      <p>這段訪談與 1999 年論文的說法完全一致，等於是同一位第一手研究者、在不同時間、對不同受眾，兩次給出相近的數字，可信度因此提高不少。訪談中他也重述了廣場探勘挖到黃金手鐲的細節，與論文內容互相印證。</p>
+      <a class="src" href="https://www.pbs.org/wgbh/nova/article/wright-inca-engineering/" target="_blank" rel="noopener">🔗 閱讀 PBS NOVA 完整專訪</a>
+    </div>
+
+    <div class="evidence-card" id="ev-gpr">
+      <div class="evidence-head">
+        <div class="ico green">📡</div>
+        <div>
+          <h3 style="margin:0;">2023年最新研究：用地質雷達重新掃描地下</h3>
+          <span class="tag modern">現代科技驗證</span>
+        </div>
+      </div>
+      <p>時間快轉到2023年，一組義大利與波蘭學者（Masini 等人）在期刊《Scientific Reports》發表〈Non-invasive subsurface imaging to investigate the site evolution of Machu Picchu〉，用探地雷達（GPR）與電阻率斷層掃描（ERT）等非破壞性技術，重新對馬丘比丘主廣場（Plaza Principal）進行地下掃描。</p>
+      <p>結果顯示，天然岩盤位於現今地表下約 2.0～3.5 公尺處，中間夾著人工回填與整地層，證實廣場在興建馬丘比丘之前，經歷過大規模的採石與地形改造工程，才鋪出現在看到的平整廣場。這項研究沒有重新計算「60%」這個具體數字，但用21世紀的地球物理儀器，獨立驗證了「地表之下確實藏著大量、有計畫的工程構造」這個核心事實。</p>
+      <div class="callout"><strong>查核小結：</strong>「60%」的精確數字目前仍只來自 Wright 團隊的工程估算，尚未被其他團隊用獨立方法重新量化驗證；但「地下工程規模龐大、是馬丘比丘屹立五百年的關鍵」這個大方向，從1999到2023年的多組研究是一致的。</div>
+      <a class="src" href="https://www.nature.com/articles/s41598-023-43361-x" target="_blank" rel="noopener">🔗 閱讀 2023 年 Scientific Reports 論文</a>
+    </div>
+
+    <div class="evidence-card" id="ev-dw">
+      <div class="evidence-head">
+        <div class="ico terracotta">📺</div>
+        <div>
+          <h3 style="margin:0;">想看更完整的畫面？兩支延伸紀錄片</h3>
+          <span class="tag">影片節點</span>
+        </div>
+      </div>
+      <p>如果60秒的短片讓你意猶未盡，這兩支影片能提供更完整的脈絡——同樣可以直接在下方播放。</p>
+      <div class="video-row">
+        <div class="video-card">
+          <div class="embed"><iframe src="https://www.youtube.com/embed/W4ZFzhTV53Q" title="Why is Machu Picchu so well preserved? | DW Documentary" allowfullscreen></iframe></div>
+          <div class="meta"><strong>Why is Machu Picchu so well preserved?</strong><div class="chan">DW Documentary（德國之聲紀錄片）· 55秒精華</div></div>
+        </div>
+        <div class="video-card">
+          <div class="embed"><iframe src="https://www.youtube.com/embed/VJ-2zqbY33E" title="Machu Picchu - The secrets of the Inca builders | DW Documentary" allowfullscreen></iframe></div>
+          <div class="meta"><strong>Machu Picchu - The secrets of the Inca builders</strong><div class="chan">DW Documentary · 完整紀錄片，深入印加建築工法</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="evidence-card" id="ev-name">
+      <div class="evidence-head">
+        <div class="ico blue">❓</div>
+        <div>
+          <h3 style="margin:0;">額外的思辨題：它可能根本不叫「馬丘比丘」</h3>
+          <span class="tag">延伸冷知識</span>
+        </div>
+      </div>
+      <p>查資料的過程中我們挖到一個有趣的旁支：2022年，秘魯文化部歷史學者 Donato Amado Gonzales 與芝加哥伊利諾大學考古學家 Brian Bauer 在期刊《Ñawpa Pacha》發表研究，比對 Hiram Bingham 1911年的探勘筆記、更早的地圖與殖民時期土地文書後認為，印加人當年可能是把這座山城稱作「<strong>Huayna Picchu</strong>」（意為「年輕的山峰」），而不是「Machu Picchu」（意為「年老的山峰」）——後者其實是附近另一座山的名字，很可能是1911年 Bingham 對外發表時才被誤植、並沿用至今的名稱。</p>
+      <p>這個案例是很好的提醒：連「馬丘比丘」這個舉世皆知的名字，都值得回頭檢視源頭文獻；面對社群媒體上任何「震撼冷知識」，習慣性地問一句「原始出處是誰？」永遠是值得的。</p>
+      <a class="src" href="https://www.smithsonianmag.com/smart-news/have-we-been-calling-machu-picchu-by-the-wrong-name-180979824/" target="_blank" rel="noopener">🔗 閱讀 Smithsonian Magazine 報導</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">延伸知識</span>
+    <h2>看不見的地下系統，實際上長什麼樣子？</h2>
+    <p class="lead">Wright 團隊的論文把馬丘比丘的排水系統拆解成八大構造，環環相扣，撐住了整座山城四百多年不崩塌。</p>
+    <ol class="drain-list">
+      <li>一條貫穿全區的<strong>主排水道</strong>，把農業區與城區的逕流分開處理，最後排入下方雨林。</li>
+      <li><strong>梯田地表排水</strong>：每層梯田沿縱向坡度設計，多餘雨水順著台階與通道排走。</li>
+      <li><strong>梯田地下排水層</strong>：土壤底下鋪滿鑿石剩下的碎石與礫石，滲透力極佳。</li>
+      <li>城區地面設計成正向排水坡度，把茅草屋頂與廣場的逕流導離建築本體。</li>
+      <li>城區與農業區的排水渠道，直接與階梯、步道甚至神殿內部的排水系統相連。</li>
+      <li>廣場地下鋪設厚達1公尺以上的碎石層，讓廣場本身能吸收、暫存暴雨逕流。</li>
+      <li>牆面上精心配置<strong>129個排水孔</strong>，在興建當下就規劃好間距與位置，不是事後補救。</li>
+      <li>利用花崗岩崩落形成的天然地下洞穴，作為額外的排水出口。</li>
+    </ol>
+    <p>這套系統至今仍在運作——即使歷經400多年無人維護、被雨林覆蓋，1911年 Hiram Bingham 重新發現馬丘比丘時，梯田石牆幾乎完好如初，這正是排水與地基工程成功的鐵證。</p>
+
+    <div class="facts-grid">
+      <div class="fact"><span class="num">~1450</span><span class="lbl">興建年代（印加皇帝 Pachacuti 在位期間）</span></div>
+      <div class="fact"><span class="num">1572</span><span class="lbl">最終被廢棄的年代</span></div>
+      <div class="fact"><span class="num">1911</span><span class="lbl">Hiram Bingham 重新發現</span></div>
+      <div class="fact"><span class="num">1983</span><span class="lbl">列入 UNESCO 世界遺產</span></div>
+      <div class="fact"><span class="num">~700</span><span class="lbl">座農業梯田</span></div>
+      <div class="fact"><span class="num">172</span><span class="lbl">城區建築物</span></div>
+      <div class="fact"><span class="num">129</span><span class="lbl">牆面排水孔</span></div>
+      <div class="fact"><span class="num">~1,940mm</span><span class="lbl">當地年平均降雨量</span></div>
+    </div>
+    <p style="font-size:0.85rem;color:var(--text-muted);">資料來源：Wright, Valencia &amp; Lorah,〈Ancient Machu Picchu Drainage Engineering〉, ASCE, 1999；<a href="https://whc.unesco.org/en/list/274/" target="_blank" rel="noopener">UNESCO World Heritage Centre</a>。</p>
+
+    <div class="callout">
+      <strong>順帶一提：</strong>研究團隊也發現，馬丘比丘的農業梯田其實<strong>不需要灌溉</strong>——當地年雨量已足夠作物生長，實地探勘也找不到任何引水灌溉的渠道支線，反而是排水系統設計得太好，才是真正的工程重點。
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-soft);border-top:1px solid var(--border);">
+  <div class="wrap">
+    <span class="eyebrow">參考資料</span>
+    <h2>完整資料來源</h2>
+    <ul class="ref-list">
+      <li><span class="rtag">原始短片</span>@Flip_the_Problem, "Machu Picchu Isn't What You See, 60% of It Is Underground" — <a href="https://www.youtube.com/shorts/wrxDpXnLhcA" target="_blank" rel="noopener">YouTube Shorts</a></li>
+      <li><span class="rtag">一手論文</span>Wright, K.R., Valencia, A., Lorah, W.L. (1999). "Ancient Machu Picchu Drainage Engineering." <em>Journal of Irrigation and Drainage Engineering</em>, ASCE — <a href="https://www.waterhistory.org/histories/machupicchu/machupicchu.pdf" target="_blank" rel="noopener">全文 PDF</a></li>
+      <li><span class="rtag">專訪</span>"A Marvel of Inca Engineering." <em>NOVA, PBS</em>, 2010 — <a href="https://www.pbs.org/wgbh/nova/article/wright-inca-engineering/" target="_blank" rel="noopener">閱讀專訪</a></li>
+      <li><span class="rtag">2023研究</span>Masini, N. et al. "Non invasive subsurface imaging to investigate the site evolution of Machu Picchu." <em>Scientific Reports</em> 13, 16035 (2023) — <a href="https://www.nature.com/articles/s41598-023-43361-x" target="_blank" rel="noopener">論文連結</a></li>
+      <li><span class="rtag">命名爭議</span>Amado Gonzales, D. &amp; Bauer, B. (2022). <em>Ñawpa Pacha</em> — 報導見 <a href="https://www.smithsonianmag.com/smart-news/have-we-been-calling-machu-picchu-by-the-wrong-name-180979824/" target="_blank" rel="noopener">Smithsonian Magazine</a></li>
+      <li><span class="rtag">世界遺產</span><a href="https://whc.unesco.org/en/list/274/" target="_blank" rel="noopener">Historic Sanctuary of Machu Picchu — UNESCO World Heritage Centre</a></li>
+      <li><span class="rtag">紀錄片</span><a href="https://www.youtube.com/watch?v=VJ-2zqbY33E" target="_blank" rel="noopener">Machu Picchu - The secrets of the Inca builders</a> / <a href="https://www.youtube.com/watch?v=W4ZFzhTV53Q" target="_blank" rel="noopener">Why is Machu Picchu so well preserved?</a> — DW Documentary</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>看不見的馬丘比丘 · 一次影片主張的事實查核練習</div>
+    <div>資料查核僅供知識分享，非旅遊或考古專業建議。</div>
+  </div>
+</footer>
+
+</body>
+</html>
