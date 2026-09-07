@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>看不見的馬丘比丘：60%地下說法查證</title>
-<meta name="description" content="一支短影片說馬丘比丘60%的建築在地下——這是真的嗎?從印加排水工程論文、PBS專訪到2023年地質雷達研究，逐一查核這個說法的證據網絡。" />
+<title>看不見的馬丘比丘：歷史、結構與60%地下傳說全解析</title>
+<meta name="description" content="從一支短影片的「60%地下」說法出發，翻譯影片內容、逐一查核證據來源，再完整梳理馬丘比丘的興建歷史與地上地下結構，附影片節點可直接連結延伸紀錄片。" />
 
 <style>
   :root{
@@ -63,6 +63,14 @@
     font-size:2.15rem;line-height:1.35;margin:0 0 14px;color:var(--text);
   }
   .hero h1 em{font-style:normal;color:var(--terracotta);}
+  .quicknav{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+  .quicknav a{
+    display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:700;
+    background:var(--surface);border:1px solid var(--border);border-radius:999px;
+    padding:7px 16px;color:var(--text);text-decoration:none;box-shadow:var(--shadow);
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .quicknav a:hover{border-color:var(--gold);transform:translateY(-1px);}
   .video-frame{
     position:relative;width:100%;max-width:300px;margin:0 auto;
     border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);
@@ -74,6 +82,17 @@
     text-align:center;font-size:0.82rem;color:var(--text-muted);margin-top:10px;
   }
   .video-caption a{color:var(--text-muted);text-decoration:underline;}
+  .transcript-box{
+    margin-top:14px;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:14px 16px;box-shadow:var(--shadow);
+  }
+  .transcript-lbl{
+    display:block;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;
+    color:var(--gold-deep);text-transform:uppercase;margin-bottom:8px;
+  }
+  .transcript-box p{margin:6px 0;font-size:0.85rem;display:flex;flex-direction:column;gap:2px;}
+  .transcript-box .en{color:var(--text-muted);font-style:italic;}
+  .transcript-box .zh{font-weight:600;}
 
   /* ---------- Verdict banner ---------- */
   .verdict{
@@ -188,6 +207,30 @@
   .fact .num{font-size:1.5rem;font-weight:800;color:var(--terracotta);display:block;}
   .fact .lbl{font-size:0.78rem;color:var(--text-muted);}
 
+  .timeline{list-style:none;margin:24px 0 0;padding:0;position:relative;}
+  .timeline::before{
+    content:'';position:absolute;left:88px;top:6px;bottom:6px;width:2px;background:var(--border);
+  }
+  .timeline li{
+    position:relative;display:grid;grid-template-columns:76px 1fr;gap:20px;
+    padding:0 0 26px 0;align-items:start;
+  }
+  .timeline li:last-child{padding-bottom:0;}
+  .timeline .yr{
+    font-weight:800;color:var(--terracotta);font-size:0.88rem;text-align:right;padding-top:2px;
+  }
+  .timeline li::after{
+    content:'';position:absolute;left:84px;top:6px;width:10px;height:10px;border-radius:50%;
+    background:var(--gold);border:2px solid var(--bg-soft);
+  }
+  .timeline li div{font-size:0.92rem;}
+  @media(max-width:560px){
+    .timeline::before{left:56px;}
+    .timeline li{grid-template-columns:48px 1fr;gap:14px;}
+    .timeline li::after{left:52px;}
+    .timeline .yr{font-size:0.72rem;}
+  }
+
   .drain-list{list-style:none;margin:20px 0;padding:0;counter-reset:d;}
   .drain-list li{
     counter-increment:d;position:relative;padding:10px 0 10px 42px;
@@ -255,15 +298,26 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">影片事實查核 · Fact Check</span>
+      <span class="eyebrow">影片翻譯 × 事實查核 × 知識專題</span>
       <h1>馬丘比丘不是你看到的樣子——<em>60%</em>的工程藏在地底下?</h1>
-      <p class="lead">一支千萬點閱的 YouTube Shorts 這樣說。這句話從哪裡來、有沒有根據？我們追到了原始工程論文、公視專訪與 2023 年最新的地質雷達研究，把整條證據鏈攤開給你看。</p>
+      <p class="lead">一支 YouTube Shorts 這樣說。我們先把影片翻成中文、追出這句話的原始出處，再一路把馬丘比丘從印加皇帝的興建動機、廢棄與重新發現，講到地面上的抗震石牆、地底下的排水系統——把「一句短影片」展開成一份完整的知識檔案。</p>
+      <div class="quicknav">
+        <a href="#claim">📌 主張查核</a>
+        <a href="#history">🏛️ 歷史沿革</a>
+        <a href="#structure">🧱 結構剖析</a>
+        <a href="#ev-dw">🎥 延伸影片</a>
+      </div>
     </div>
     <div>
       <div class="video-frame">
         <iframe src="https://www.youtube.com/embed/wrxDpXnLhcA" title="Machu Picchu Isn't What You See, 60% of It Is Underground" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <p class="video-caption">原始影片來源：@Flip_the_Problem ·「Machu Picchu Isn't What You See, 60% of It Is Underground」· <a href="https://www.youtube.com/shorts/wrxDpXnLhcA" target="_blank" rel="noopener">在 YouTube 觀看</a></p>
+      <div class="transcript-box">
+        <span class="transcript-lbl">影片逐字稿中譯</span>
+        <p><span class="en">"Machu Picchu isn't what you see."</span><span class="zh">馬丘比丘不是你眼睛看到的樣子。</span></p>
+        <p><span class="en">"Sixty percent of the construction lies underground."</span><span class="zh">六成的工程，其實藏在地底下。</span></p>
+      </div>
     </div>
   </div>
 
@@ -410,7 +464,65 @@
   </div>
 </section>
 
-<section>
+<section id="history" style="background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <span class="eyebrow">歷史沿革</span>
+    <h2>從印加皇帝的度假莊園，到世界遺產</h2>
+    <p class="lead">在看結構之前，先搞懂馬丘比丘經歷了什麼——興建、棄置、沉睡四百年，再到被科學家重新研究。</p>
+    <ol class="timeline">
+      <li><span class="yr">1438–1471</span><div><strong>印加皇帝 Pachacuti 在位</strong>，展開一系列征服，把印加帝國從庫斯科谷地擴張成橫跨南美安地斯山的大帝國。</div></li>
+      <li><span class="yr">約1450</span><div><strong>馬丘比丘動工興建</strong>，作為 Pachacuti 的皇家莊園與宗教聖地，選址在兩座神聖山峰（Machu Picchu 峰與 Huayna Picchu 峰）之間的山脊上。</div></li>
+      <li><span class="yr">1450–1540s</span><div><strong>持續使用約90年</strong>，常住人口約300人，皇帝駐蹕期間可達千人；同一時期，印加工程師也把六成心力投入在這裡的地下基礎與排水系統。</div></li>
+      <li><span class="yr">1532</span><div>西班牙征服者 Pizarro 登陸秘魯，印加帝國開始瓦解。馬丘比丘地處偏遠山脊，西班牙人始終沒有發現、也沒有摧毀這裡。</div></li>
+      <li><span class="yr">1572</span><div>印加最後的抵抗據點 Vilcabamba 被西班牙人攻陷，帝國正式滅亡；馬丘比丘在此前後被居民徹底棄置，任由雨林吞沒。</div></li>
+      <li><span class="yr">1911</span><div>耶魯大學學者 <strong>Hiram Bingham</strong> 在當地農民帶路下「重新發現」馬丘比丘——他原本是在尋找印加最後的首都 Vilcabamba。</div></li>
+      <li><span class="yr">1994–2000</span><div>土木工程師 <strong>Kenneth Wright</strong> 團隊取得許可，展開排水、水利與地質的系統性研究，「60%在地下」的說法由此而來。</div></li>
+      <li><span class="yr">1983</span><div>聯合國教科文組織將馬丘比丘列為<strong>世界遺產</strong>（Historic Sanctuary of Machu Picchu）。</div></li>
+      <li><span class="yr">2007</span><div>在全球網路票選中入選「世界新七大奇蹟」之一。</div></li>
+      <li><span class="yr">2022–2023</span><div>學界持續有新發現：命名爭議研究、地質雷達地下掃描研究相繼發表，馬丘比丘至今仍是活躍的研究現場。</div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="structure">
+  <div class="wrap">
+    <span class="eyebrow">結構剖析</span>
+    <h2>地面上，馬丘比丘長什麼樣子？</h2>
+    <p class="lead">查完地下的排水工程，回頭看看地表上的山城怎麼分區、怎麼蓋、怎麼防震。</p>
+
+    <h3 style="margin-top:24px;">兩大分區</h3>
+    <p>馬丘比丘以一道長長的乾砌石牆與壕溝，把山脊分成南北兩塊：北側是<strong>城區（Urban Sector）</strong>，南側是<strong>農業區（Agricultural Sector）</strong>。城區本身又依地勢分成上城（Hanan，西側）與下城（Urin，東側）——上城地勢較高，是皇室居所、Intihuatana 太陽石與主要神殿所在的神聖空間；下城則有較多一般居所與倉庫，中間以主廣場相連。農業區則是數百層、總面積將近5公頃的梯田，圍繞在城區外圍（不同資料對「梯田總數」的計算單位不一，估計值從三百多層到七百多層都有，但總面積的估計相對一致）。</p>
+
+    <h3 style="margin-top:24px;">幾個一定會被導覽員特別停下來講的地標</h3>
+    <div class="facts-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+      <div class="fact" style="text-align:left;">
+        <span class="lbl" style="font-weight:700;color:var(--terracotta);display:block;margin-bottom:4px;">☀️ 太陽神殿 Temple of the Sun</span>
+        <span class="lbl">馬丘比丘唯一一座圓弧造型的建築，蓋在天然巨岩上，窗戶方位經過精密計算，冬至清晨陽光會準確射入殿內，照在中央的聖石上。</span>
+      </div>
+      <div class="fact" style="text-align:left;">
+        <span class="lbl" style="font-weight:700;color:var(--terracotta);display:block;margin-bottom:4px;">🪨 太陽石 Intihuatana</span>
+        <span class="lbl">一整塊從岩盤直接雕鑿出的石柱，一般認為是印加人用來觀測天象、標記節氣的「拴日石」，是城區地勢最高、最神聖的角落之一。</span>
+      </div>
+      <div class="fact" style="text-align:left;">
+        <span class="lbl" style="font-weight:700;color:var(--terracotta);display:block;margin-bottom:4px;">🪟 三窗神殿 Temple of the Three Windows</span>
+        <span class="lbl">三面梯形大窗正對著東方群山，是上城最具代表性的建築之一，窗框石材加工精細，梯形設計本身也是抗震工法的一環。</span>
+      </div>
+      <div class="fact" style="text-align:left;">
+        <span class="lbl" style="font-weight:700;color:var(--terracotta);display:block;margin-bottom:4px;">🏛️ 主廣場 Main Plaza</span>
+        <span class="lbl">分隔上城與下城的長條形草坪廣場，底下正是前面提到、被2023年地質雷達掃描過的深層碎石排水構造。</span>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px;">為什麼五百年不倒？乾砌石與梯形門窗</h3>
+    <p>馬丘比丘最精緻的牆體採用一種稱為「<strong>ashlar</strong>」的乾砌工法：石塊經過細膩打磨，彼此緊密咬合、不使用任何灰泥，接縫緊到連刀片都插不進去。這種工法搭配幾個關鍵防震細節：牆面由下往上微微內傾、門窗開口做成上窄下寬的<strong>梯形</strong>、牆角做圓弧處理——地震發生時，整面牆的石塊能像跳舞一樣輕微錯動、吸收震波，震後再各自歸位，而不是像灌漿牆體那樣整片龜裂倒塌。梯田本身的分層結構，也同時發揮了消散地震能量與防止山坡滑動的雙重作用。</p>
+
+    <div class="callout">
+      <strong>把地上地下兜在一起看：</strong>梯形門窗防震、梯田消能防滑、地下碎石排水放水——這三件事其實是同一套工程哲學的三個面向：印加工程師從一開始就把「這座山城要如何在地震帶、暴雨區、陡坡上撐過永遠」當成最優先的設計題目，美觀反而是其次的結果。
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="wrap">
     <span class="eyebrow">延伸知識</span>
     <h2>看不見的地下系統，實際上長什麼樣子？</h2>
@@ -432,7 +544,7 @@
       <div class="fact"><span class="num">1572</span><span class="lbl">最終被廢棄的年代</span></div>
       <div class="fact"><span class="num">1911</span><span class="lbl">Hiram Bingham 重新發現</span></div>
       <div class="fact"><span class="num">1983</span><span class="lbl">列入 UNESCO 世界遺產</span></div>
-      <div class="fact"><span class="num">~700</span><span class="lbl">座農業梯田</span></div>
+      <div class="fact"><span class="num">300~700</span><span class="lbl">座農業梯田（各方估計不一）</span></div>
       <div class="fact"><span class="num">172</span><span class="lbl">城區建築物</span></div>
       <div class="fact"><span class="num">129</span><span class="lbl">牆面排水孔</span></div>
       <div class="fact"><span class="num">~1,940mm</span><span class="lbl">當地年平均降雨量</span></div>
@@ -463,7 +575,7 @@
 
 <footer>
   <div class="wrap">
-    <div>看不見的馬丘比丘 · 一次影片主張的事實查核練習</div>
+    <div>看不見的馬丘比丘 · 從一支短影片出發的歷史、結構與事實查核專題</div>
     <div>資料查核僅供知識分享，非旅遊或考古專業建議。</div>
   </div>
 </footer>
