@@ -267,6 +267,17 @@
   .video-card .meta{padding:14px 16px;}
   .video-card .meta .chan{font-size:0.78rem;color:var(--text-muted);}
 
+  .pano-card{
+    margin:22px 0 28px;background:var(--surface);border:1px solid var(--border);
+    border-radius:16px;overflow:hidden;box-shadow:var(--shadow);
+  }
+  .pano-embed{aspect-ratio:16/9;background:#111;}
+  .pano-embed iframe{width:100%;height:100%;border:0;}
+  .pano-meta{padding:16px 20px;}
+  .pano-meta strong{display:block;margin-bottom:4px;color:var(--green-deep);}
+  .pano-meta p{margin:4px 0;font-size:0.9rem;}
+  .pano-meta .chan{font-size:0.78rem;color:var(--text-muted);}
+
   /* verdict scale */
   .scale{
     display:flex;border-radius:999px;overflow:hidden;height:14px;margin:14px 0 6px;
@@ -505,6 +516,15 @@
     <h3 style="margin-top:24px;">兩大分區</h3>
     <p>馬丘比丘以一道長長的乾砌石牆與壕溝，把山脊分成南北兩塊：北側是<strong>城區（Urban Sector）</strong>，南側是<strong>農業區（Agricultural Sector）</strong>。城區本身又依地勢分成上城（Hanan，西側）與下城（Urin，東側）——上城地勢較高，是皇室居所、Intihuatana 太陽石與主要神殿所在的神聖空間；下城則有較多一般居所與倉庫，中間以主廣場相連。農業區則是數百層、總面積將近5公頃的梯田，圍繞在城區外圍（不同資料對「梯田總數」的計算單位不一，估計值從三百多層到七百多層都有，但總面積的估計相對一致）。</p>
 
+    <div class="pano-card">
+      <div class="pano-embed"><iframe src="https://www.youtube.com/embed/gsKjy5WYRgI" title="Machu Picchu Cuzco 360 Drone" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+      <div class="pano-meta">
+        <strong>360° 空拍環景：從瓦納比丘峰上空俯瞰整座山城</strong>
+        <p>用滑鼠拖曳（手機用手指滑動）畫面即可 360 度環顧，親眼看清楚上一段文字說的「城區／農業區」怎麼分佈在山脊兩側。空拍機：DJI Inspire 2 + Insta360 One X2。</p>
+        <span class="chan">拍攝／剪輯：Daniel Gárate（YouTube）</span>
+      </div>
+    </div>
+
     <h3 style="margin-top:24px;">幾個一定會被導覽員特別停下來講的地標</h3>
     <div class="facts-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
       <div class="fact" style="text-align:left;">
@@ -581,6 +601,7 @@
       <li><span class="rtag">命名爭議</span>Amado Gonzales, D. &amp; Bauer, B. (2022). <em>Ñawpa Pacha</em> — 報導見 <a href="https://www.smithsonianmag.com/smart-news/have-we-been-calling-machu-picchu-by-the-wrong-name-180979824/" target="_blank" rel="noopener">Smithsonian Magazine</a></li>
       <li><span class="rtag">世界遺產</span><a href="https://whc.unesco.org/en/list/274/" target="_blank" rel="noopener">Historic Sanctuary of Machu Picchu — UNESCO World Heritage Centre</a></li>
       <li><span class="rtag">紀錄片</span><a href="https://www.youtube.com/watch?v=VJ-2zqbY33E" target="_blank" rel="noopener">Machu Picchu - The secrets of the Inca builders</a> / <a href="https://www.youtube.com/watch?v=W4ZFzhTV53Q" target="_blank" rel="noopener">Why is Machu Picchu so well preserved?</a> — DW Documentary</li>
+      <li><span class="rtag">360°空拍</span>Daniel Gárate, "Machu Picchu Cuzco 360 Drone" — <a href="https://www.youtube.com/watch?v=gsKjy5WYRgI" target="_blank" rel="noopener">YouTube</a></li>
     </ul>
   </div>
 </section>
